@@ -2,9 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const ROOT = path.resolve( __dirname, 'src' );
 
-/**
- * Webpack Plugins
- */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -18,18 +15,6 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'tslint-loader',
-                    options: {
-                        emitErrors: true
-                    }
-                },
-                enforce: 'pre'
-            },
-
             {
                 test: /\.ts$/,
                 exclude: [ /node_modules/ ],
@@ -71,15 +56,6 @@ module.exports = {
             title: 'AngularJS - Webpack',
             template: 'index.html',
             inject: true
-        }),
-        new LoaderOptionsPlugin({
-            debug: true,
-            options: {
-                tslint: {
-                    configuration: require('./tslint.json'),
-                    typeCheck: true
-                }
-            }
         }),
         new ExtractTextPlugin('css/style.css')
     ],

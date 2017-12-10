@@ -1,4 +1,3 @@
-export class Root implements angular.IComponentOptions {
-    static selector = 'root';
-    static template = '<div ui-view></div>';
+export const  Root =  {
+     template: '<div ui-view></div>'
 }
